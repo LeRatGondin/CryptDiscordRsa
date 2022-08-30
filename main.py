@@ -11,7 +11,7 @@ from discord.ext import (
     commands,
 )
 
-token = ""
+token = "TokenIci"
 
 CryptBot = discord.Client()
 CryptBot = commands.Bot(
@@ -82,11 +82,11 @@ async def createkey(ctx):
         public_rsa.close()
 
 
+
 @CryptBot.command()
 async def exportkey(ctx):
-    await ctx.message.delete()
     key = open('RsaEncryptedKey/public.pem').read()
-    await ctx.send(f'```ini\nLa commande pour importer votre clé est : \n[prefix]importkey {key}```')
+    await ctx.send(f'\nLa commande pour importer votre clé est : \n```\n-importkey {key}```')
 
 
 @CryptBot.command()
@@ -120,8 +120,6 @@ async def rsastart(ctx, user: discord.User):
             mes = base64.b64encode(mes).decode('ascii')
             user = CryptBot.get_user(user.id)
             await user.send(f'@Enc:{mes}', delete_after=1)
-            if len(mes) > 2000:
-                print('Veuillez separrer vottre message en plusieurs sous parties')
 
     async def Decode(user):
         global MdpRsa
