@@ -31,7 +31,7 @@ async def on_message_edit(before, after):
 @CryptBot.event
 async def on_message(message):
     if message.content.startswith("@Enc:"):
-        if message.author.id =! CryptBot.user.id:
+        if message.author.id != CryptBot.user.id:
             time = datetime.datetime.now().strftime("%H:%M")
             with open('RsaEncryptedKey/private.pem', 'r') as fk:
                 priv = fk.read()
