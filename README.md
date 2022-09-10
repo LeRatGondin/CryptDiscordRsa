@@ -13,8 +13,11 @@ Il vous faudra également mettre votre [token discord](https://mediaboss.fr/trou
 
 ##  Utilisation
 Les deux personnes devront créer des clés rsa grâce a la commande -createkey (demande un mdp dans le terminal)
+
 Ensuite elles devrons d'echanger leurs clés publiques avec la commande -exportkey pour envoyer la commande que l'autre personne devra executer
+
 Et pour lancer la discussion chiffrée vous devrez tout les deux lancer la commande -rsastart avec un ping de l'autre utilisateur (demande un mdp dans le terminal)
+
 Et vous pourrez discutter de maniere securisée sur discord sans que rien ne soit enregistré 
 
 ## Images 
