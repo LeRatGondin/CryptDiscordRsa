@@ -11,7 +11,7 @@ from discord.ext import (
     commands,
 )
 
-token = "TokenIci"
+token = "YourTokenHere"
 
 CryptBot = discord.Client()
 CryptBot = commands.Bot(
@@ -40,8 +40,7 @@ async def on_message(message):
                 mes = base64.b64decode(message.content[4:])
                 x = cipher.decrypt(mes)
                 mes = x.decode('ascii')
-                print(
-                    f'{Fore.CYAN}[{time} - {message.author}] : {Fore.RESET}{mes}')
+                print(f'\n{Fore.CYAN}[{time} - {message.author}] : {Fore.RESET}{mes}')
 
     await CryptBot.process_commands(message)
 
@@ -96,8 +95,7 @@ async def importkey(ctx, *, key):
         with open('RsaEncryptedKey/public_client.pem', 'w') as kf:
             kf.write(key)
             kf.close()
-    else:
-        print('La clé est invalide')
+    else: print('La clé est invalide')
 
 
 @CryptBot.command()
@@ -113,10 +111,8 @@ async def rsastart(ctx, user: discord.User):
     async def Encode(user):
         while True:
             original = await aioconsole.ainput("Entrez votre message : ")
-            while original == None:
-                original = await aioconsole.ainput("Entrez votre message : ")
-            mes = encode_rsa(original.encode(
-                'ascii', 'replace'), 'RsaEncryptedKey/public_client.pem')
+            while original == None: original = await aioconsole.ainput("Entrez votre message : ")
+            mes = encode_rsa(original.encode('ascii', 'replace'), 'RsaEncryptedKey/public_client.pem')
             mes = base64.b64encode(mes).decode('ascii')
             user = CryptBot.get_user(user.id)
             await user.send(f'@Enc:{mes}', delete_after=1)
@@ -133,18 +129,15 @@ async def rsastart(ctx, user: discord.User):
 
 
 @CryptBot.event
-async def on_connect():
-    print("Ready to encrypt some messages")
+async def on_connect(): print("Ready to encrypt some messages")
 
 
 def Init():
-    def verif_token(token_verif): return requests.get(
-        "https://discord.com/api/users/@me/guilds", headers={"authorization": token_verif}).reason == "OK"
+    def verif_token(token_verif): return requests.get("https://discord.com/api/users/@me/guilds", headers={"authorization": token_verif}).reason == "OK"
     if verif_token(token):
         CryptBot.run(token, reconnect=True)
     else:
-        print(
-            f"{Fore.RED}[ERREUR] {Fore.YELLOW}Un token invalide a été entré"+Fore.RESET)
+        print(f"{Fore.RED}[ERREUR] {Fore.YELLOW}Un token invalide a été entré"+Fore.RESET)
         input()
 
 
