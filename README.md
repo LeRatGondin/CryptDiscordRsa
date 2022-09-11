@@ -1,5 +1,7 @@
 # Chiffrement Rsa Discord
 
+## ATTENTION N'EST PAS COMPATIBLE AVEC DISCORD.PY VOUS DEVREZ LE DESINSTALLEZ PUIS INSTALLER LES REQUIREMENTS
+
 ## Description
 Un selfbot permettant une discuttion entre deux personnes de maniere securisée en utilisant le chiffrement [RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA)
 
