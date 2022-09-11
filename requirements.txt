@@ -1,5 +1,4 @@
 discord.py-self
-pyXor
 cryptodome
 colorama
 requests
